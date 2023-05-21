@@ -31,16 +31,16 @@ class HomeFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_post, container, false)
-        var create : TextView = view.findViewById(R.id.createTV)
-        var recyclerView : RecyclerView = view.findViewById(R.id.homeRv)
-        var gameList = ArrayList<GnSGames>()
+        val create : TextView = view.findViewById(R.id.createTV)
+        val recyclerView : RecyclerView = view.findViewById(R.id.homeRv)
+        val gameList = ArrayList<GnSGames>()
         lateinit var gamesListadapter : gamesListAdapter
 
         //Click listener, Game variables sent
-        var onClickListener : gamesListAdapter.OnClickListener = gamesListAdapter.OnClickListener {
-            var intent = Intent(context, gameScreen::class.java)
+        val onClickListener : gamesListAdapter.OnClickListener = gamesListAdapter.OnClickListener {
+            val intent = Intent(context, gameScreen::class.java)
             intent.putExtra("curr", it.curr)
-            var temp  = ArrayList<String>()
+            val temp  = ArrayList<String>()
             if(it.attempted.get(ParseUser.getCurrentUser().objectId) != null){
                 temp.addAll(it.attempted.get(ParseUser.getCurrentUser().objectId)!!)
             }
@@ -56,7 +56,7 @@ class HomeFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
 
         //Queries for games
-        var query : ParseQuery<GnSGames> = ParseQuery.getQuery("Game")
+        val query : ParseQuery<GnSGames> = ParseQuery.getQuery("Game")
         query.findInBackground { objects, e ->
             if(e != null){
                 Log.e("HomeFragmentQueryException: ", e.toString())

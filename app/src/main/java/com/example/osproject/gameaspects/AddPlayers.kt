@@ -19,10 +19,10 @@ class addPlayers : AppCompatActivity() {
         setContentView(R.layout.activity_add_players)
 
         //Declarations
-        var recyclerview : RecyclerView = findViewById(R.id.apRv)
-        var finish : Button = findViewById(R.id.apfinish)
-        var playerList = ArrayList<String>()
-        var posPlayer = ArrayList<ParseUser>()
+        val recyclerview : RecyclerView = findViewById(R.id.apRv)
+        val finish : Button = findViewById(R.id.apfinish)
+        val playerList = ArrayList<String>()
+        val posPlayer = ArrayList<ParseUser>()
         lateinit var adapter : addPlayersAdapter
         var onClickListener = addPlayersAdapter.OnClickListener {
             playerList.add(posPlayer.get(it).username)

@@ -31,10 +31,10 @@ class creationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_creation)
         //Declarations
-        var word : EditText = findViewById(R.id.currWord)
-        var title : EditText = findViewById(R.id.createTitle)
-        var add : TextView = findViewById(R.id.addPlayers)
-        var confirm : Button = findViewById(R.id.createGame)
+        val word : EditText = findViewById(R.id.currWord)
+        val title : EditText = findViewById(R.id.createTitle)
+        val add : TextView = findViewById(R.id.addPlayers)
+        val confirm : Button = findViewById(R.id.createGame)
 
 
         //Add Players function
@@ -56,10 +56,10 @@ class creationActivity : AppCompatActivity() {
             }
             var newGame = GnSGames()
             newGame.players = playerList
-            var score = HashMap<String, Int>()
-            var numattempt = HashMap<String, Int>()
-            var attempt = HashMap<String, List<String>>()
-            var solved = HashMap<String, Boolean>()
+            val score = HashMap<String, Int>()
+            val numattempt = HashMap<String, Int>()
+            val attempt = HashMap<String, List<String>>()
+            val solved = HashMap<String, Boolean>()
             for(i in playerList){
                 score.put(i.username, 0)
                 numattempt.put(i.username, 0)
@@ -110,8 +110,6 @@ class creationActivity : AppCompatActivity() {
                 }
                 playerList.add(ParseUser.getCurrentUser())
             }
-        }else{
-
         }
     }
 }

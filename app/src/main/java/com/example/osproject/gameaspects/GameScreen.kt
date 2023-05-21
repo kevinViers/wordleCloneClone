@@ -27,12 +27,12 @@ class gameScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gamescreen)
         var data = intent.extras
-        var attempts = ArrayList<String>()
-        var curr : String
-        var gnSGames : GnSGames = intent.getParcelableExtra("game", GnSGames::class.java)!!
-        var gameScreenadapter : gameScreenAdapter
-        var nextw : EditText = findViewById(R.id.nextW)
-        var recyclerView : RecyclerView = findViewById(R.id.gsRv)
+        val attempts = ArrayList<String>()
+        val curr : String
+        val gnSGames : GnSGames = intent.getParcelableExtra("game", GnSGames::class.java)!!
+        val gameScreenadapter : gameScreenAdapter
+        val nextw : EditText = findViewById(R.id.nextW)
+        val recyclerView : RecyclerView = findViewById(R.id.gsRv)
 
         nextw.visibility = View.INVISIBLE
 

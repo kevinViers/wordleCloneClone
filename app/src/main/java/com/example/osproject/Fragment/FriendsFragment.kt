@@ -35,23 +35,23 @@ class FriendsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        var view = inflater.inflate(R.layout.fragment_friends, container, false)
+        val view = inflater.inflate(R.layout.fragment_friends, container, false)
 
         //Declarations
-        var recyclerView : RecyclerView = view.findViewById(R.id.friendsRv)
-        var add : Button = view.findViewById(R.id.FriendsAdd)
-        var friends = ArrayList<ParseUser>()
+        val recyclerView : RecyclerView = view.findViewById(R.id.friendsRv)
+        val add : Button = view.findViewById(R.id.FriendsAdd)
+        val friends = ArrayList<ParseUser>()
         lateinit var requestAdapter: FriendsRequestAdapter
         lateinit var adapter : friendsAdapter
-        var friendsRequest : RecyclerView = view.findViewById(R.id.friendsRequestRv)
-        var requestsList = ArrayList<Requests>()
+        val friendsRequest : RecyclerView = view.findViewById(R.id.friendsRequestRv)
+        val requestsList = ArrayList<Requests>()
 
 
-        var onClickListener : FriendsRequestAdapter.OnClickListener = FriendsRequestAdapter.OnClickListener { requests, x, position ->
+        val onClickListener : FriendsRequestAdapter.OnClickListener = FriendsRequestAdapter.OnClickListener { requests, x, position ->
             if (x) {
                 //Adds to friendsList
-                var temp = ParseUser.getCurrentUser()
-                var newFriend = ArrayList<ParseUser>()
+                val temp = ParseUser.getCurrentUser()
+                val newFriend = ArrayList<ParseUser>()
                 if (ParseUser.getCurrentUser().getList<ParseUser>("friendsList") != null) {
                     newFriend.addAll(temp.getList("friendsList")!!)
                 }
@@ -63,8 +63,8 @@ class FriendsFragment : Fragment() {
                 adapter.notifyDataSetChanged()
 
                 //Creates new FriendsList
-                var tempFriends = FriendsList()
-                var tempReq = ArrayList<ParseUser>()
+                val tempFriends = FriendsList()
+                val tempReq = ArrayList<ParseUser>()
                 tempReq.add(requests.requested)
                 tempFriends.setfriendsList(tempReq)
                 tempFriends.curr = requests.requester
@@ -113,7 +113,7 @@ class FriendsFragment : Fragment() {
         friendsRequest.layoutManager = LinearLayoutManager(context)
 
         //Sends Query to backend for Friends Request
-        var requestQuery : ParseQuery<Requests> = ParseQuery.getQuery("FriendsRequest")
+        val requestQuery : ParseQuery<Requests> = ParseQuery.getQuery("FriendsRequest")
         requestQuery.whereEqualTo("requested", ParseUser.getCurrentUser())
         requestQuery.findInBackground { objects, e ->
             if (e != null) {

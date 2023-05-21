@@ -33,9 +33,9 @@ class SettingsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_settings, container, false)
-        var user = view.findViewById<EditText>(R.id.settingsUser)
-        var pass = view.findViewById<TextView>(R.id.settingsPassword)
-        var logout : Button = view.findViewById(R.id.logout)
+        val user = view.findViewById<EditText>(R.id.settingsUser)
+        val pass = view.findViewById<TextView>(R.id.settingsPassword)
+        val logout : Button = view.findViewById(R.id.logout)
 
         user.addTextChangedListener(object : TextWatcher{
             lateinit var before : String
@@ -49,7 +49,7 @@ class SettingsFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable?) {
                 //Queries usernames
-                var query = ParseUser.getQuery()
+                val query = ParseUser.getQuery()
                 query.findInBackground { objects, e ->
                     if(e != null){
                         Log.e("SettingsQueryException: ", e.toString())
@@ -62,7 +62,7 @@ class SettingsFragment : Fragment() {
                         }
                     }
                     //Changes username
-                    var pUser = ParseUser.getCurrentUser()
+                    val pUser = ParseUser.getCurrentUser()
                     pUser.username = user.text.toString()
                     pUser.saveInBackground {
                         if(it != null){
